@@ -10,9 +10,19 @@ const config: Config = {
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        'blue-red-gradient': 'linear-gradient(135deg, #4A4CC3, #A13737)',
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        'market-blue': '#4A4CC3',
+        'market-red': '#A13737',
+        'market-pink': '#953DAB',
+        'market-green': '#31925C'
+      },
+    screens: {
+      'super-sm': '455px',
+    }
     },
   },
   plugins: [],

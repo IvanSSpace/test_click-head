@@ -1,8 +1,12 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { Cousine } from "next/font/google";
+import "./globals.css"; // Убедитесь, что Tailwind CSS подключен здесь
+import Link from "next/link";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Cousine({ subsets: ["latin"], weight: '400' });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +20,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`flex flex-col min-h-screen ${inter.className}`}>
+        <Header />
+        <main className="flex-grow p-4">
+          {children}
+        </main>
+        <Footer />
+      </body>
     </html>
   );
 }
