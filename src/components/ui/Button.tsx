@@ -1,7 +1,6 @@
-'use client'
-
+// src/components/ui/Button.tsx
 import Image from "next/image";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 
 interface ButtonProps {
   onClick: () => void;
@@ -13,7 +12,7 @@ const Button: React.FC<ButtonProps> = ({ onClick, inCart }) => {
 
   const handleClick = () => {
     if (inCart) {
-      router.push('/cart')
+      router.push("/cart");
     } else {
       onClick();
     }

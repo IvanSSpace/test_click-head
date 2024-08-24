@@ -14,6 +14,7 @@ interface ProductsStore {
   errors: string[];
   fetchProducts: () => void;
   toggleCart: (id: number) => void;
+  removeFromCart: (id: number) => void;
 }
 
 const useProductsStore = create<ProductsStore>((set) => ({
@@ -39,6 +40,13 @@ const useProductsStore = create<ProductsStore>((set) => ({
     set((state) => ({
       products: state.products.map((product) =>
         product.id === id ? { ...product, inCart: !product.inCart } : product
+      ),
+    }));
+  },
+  removeFromCart: (id: number) => {
+    set((state) => ({
+      products: state.products.map((product) =>
+        product.id === id ? { ...product, inCart: false } : product
       ),
     }));
   },

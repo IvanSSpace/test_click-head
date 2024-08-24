@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <main>
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center">
         <div className="grid grid-cols-1 super-sm:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-8 mb-32">
           {products.map((card) => (
             <Card
