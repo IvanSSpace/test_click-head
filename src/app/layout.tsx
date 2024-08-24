@@ -1,10 +1,10 @@
-// src/app/layout.tsx
 import type { Metadata } from "next";
 import { Cousine } from "next/font/google";
 import "./globals.css"; // Убедитесь, что Tailwind CSS подключен здесь
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import InitializeState from "@/components/InitializeState";
 
 const inter = Cousine({ subsets: ["latin"], weight: '400' });
 
@@ -26,6 +26,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <InitializeState />
       </body>
     </html>
   );

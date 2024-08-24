@@ -6,9 +6,9 @@ import { useEffect } from "react";
 export default function Home() {
   const { products, isLoading, errors, fetchProducts } = useProductsStore();
 
-  useEffect(() => {
-    fetchProducts();
-  }, [fetchProducts]);
+  // useEffect(() => {
+  //   fetchProducts();
+  // }, [fetchProducts]);
 
   if (isLoading) return <div>Loading...</div>;
   if (errors.length > 0) return <div>Error: {errors.join(", ")}</div>;
