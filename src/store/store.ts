@@ -13,6 +13,7 @@ interface ProductsStore {
   isLoading: boolean;
   errors: string[];
   fetchProducts: () => void;
+  toggleCart: (id: number) => void;
 }
 
 const useProductsStore = create<ProductsStore>((set) => ({
@@ -23,14 +24,23 @@ const useProductsStore = create<ProductsStore>((set) => ({
     set({ isLoading: true });
     try {
       const response = await axios.get("https://dummyjson.com/products");
-      const products = response.data.products.map((item: any) => {
-        const { id, title, price } = item;
-        return { id, title, price };
-      });
+      const products = response.data.products.map((item: any) => ({
+        id: item.id,
+        title: item.title,
+        price: item.price,
+        inCart: false,
+      }));
       set({ products, isLoading: false, errors: [] });
     } catch (error) {
       set({ errors: ["Failed to fetch products"], isLoading: false });
     }
+  },
+  toggleCart: (id: number) => {
+    set((state) => ({
+      products: state.products.map((product) =>
+        product.id === id ? { ...product, inCart: !product.inCart } : product
+      ),
+    }));
   },
 }));
 
