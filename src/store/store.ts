@@ -1,12 +1,6 @@
+import { Product } from "@/interfaces/Product";
 import axios from "axios";
 import { create } from "zustand";
-
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  inCart: boolean;
-}
 
 interface ProductsStore {
   products: Product[];

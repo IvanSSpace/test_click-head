@@ -3,15 +3,9 @@ import Image from 'next/image';
 import Button from './ui/Button';
 import { useProductsStore } from '@/store/store';
 import { useRouter } from 'next/navigation';
+import { Product } from '@/interfaces/Product';
 
-interface CardProps {
-  title: string;
-  price: number;
-  id: number;
-  inCart: boolean;
-}
-
-const Card: React.FC<CardProps> = ({ title, price, id, inCart }) => {
+const Card: React.FC<Product> = ({ title, price, id, inCart }) => {
   const toggleCart = useProductsStore((state) => state.toggleCart);
   const router = useRouter();
 
