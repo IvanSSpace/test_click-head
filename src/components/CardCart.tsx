@@ -18,20 +18,28 @@ const CardCart: React.FC<CardProps> = ({ title, price, id }) => {
     if (dollars > price) {
       buyWithDollars(price)
       buyProduct(id)
+      toast.success(`you have successfully purchased the product ${title}`, {
+        position: "top-right",
+      });
     } else {
-      toast.error('top up your Dollars balance on the profile page', {
+      toast.warning('top up your Dollars balance on the profile page', {
         position: "top-right",
       });
 
     }
   }
 
+  
+
   const handleBuyUseCoins = () => {
     if (coins > price) {
       buyWithCoins(price)
       buyProduct(id)
+      toast.success(`you bought the product "${title}"`, {
+        position: "top-right",
+      });
     } else {
-      toast.error('top up your Coins balance on the profile page', {
+      toast.warning('top up your Coins balance on the profile page', {
         position: "top-right",
       });
     }
@@ -72,7 +80,7 @@ const CardCart: React.FC<CardProps> = ({ title, price, id }) => {
       >
         <div className="flex flex-row gap-1 sm:px-6 justify-center items-center">
           <Image className="sm:mr-6" src='./bin.svg' width={20} height={20} alt="basket" />
-          <p className="hidden sm:block text-nowrap">remove product</p>
+          <p className="hidden sm:block text-nowrap">de-cart</p>
         </div>
       </button>
     </div>
