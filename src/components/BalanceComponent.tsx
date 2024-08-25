@@ -9,7 +9,6 @@ const BalanceComponent = () => {
     coins,
     addDollars,
     buyWithDollars,
-    buyWithCoins,
     convertDollarsToCoins,
   } = useBalanceStore();
 
@@ -29,16 +28,6 @@ const BalanceComponent = () => {
       setDollarAmount("");
     } else {
       alert("Please enter a valid amount.");
-    }
-  };
-
-  const handleBuyWithCoins = () => {
-    const amount = parseFloat(coinAmount);
-    if (amount > 0 && coins >= amount) {
-      buyWithCoins(amount);
-      setCoinAmount("");
-    } else {
-      alert("Insufficient coins or invalid amount.");
     }
   };
 
@@ -80,36 +69,14 @@ const BalanceComponent = () => {
             onChange={(e) => handleInputChange(setDollarAmount, e.target.value)}
             className="w-full h-10 px-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-market-pink"
           />
-          <div className="flex space-x-2">
+          
             <button
               onClick={handleAddDollars}
-              className="w-1/2 h-10 bg-market-pink text-white rounded-md hover:bg-market-pink-dark"
+              className="w-full h-10 bg-market-pink text-white rounded-md hover:bg-market-pink-dark"
             >
               Add Dollars
             </button>
-            <button
-              onClick={handleBuyWithDollars}
-              className="w-1/2 h-10 bg-market-pink text-white rounded-md hover:bg-market-pink-dark"
-            >
-              Buy with Dollars
-            </button>
-          </div>
-
-          <input
-            type="text"
-            placeholder="Enter coins amount"
-            value={coinAmount}
-            onChange={(e) => handleInputChange(setCoinAmount, e.target.value)}
-            className="w-full h-10 px-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-market-pink"
-          />
-          <div className="flex space-x-2">
-            <button
-              onClick={handleBuyWithCoins}
-              className="w-1/2 h-10 bg-market-pink text-white rounded-md hover:bg-market-pink-dark"
-            >
-              Buy with Coins
-            </button>
-          </div>
+        
 
           <button
             onClick={handleConvertDollarsToCoins}

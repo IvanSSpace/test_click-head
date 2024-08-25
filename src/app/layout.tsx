@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Cousine } from "next/font/google";
-import "./globals.css"; // Убедитесь, что Tailwind CSS подключен здесь
+import "./globals.css";
 import Link from "next/link";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import InitializeState from "@/components/InitializeState";
@@ -27,6 +29,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <InitializeState />
+        <ToastContainer />
       </body>
     </html>
   );

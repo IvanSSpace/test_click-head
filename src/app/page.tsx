@@ -13,17 +13,20 @@ export default function Home() {
 
   return (
     <main>
-      <div className="flex items-center justify-center">
-        <div className="grid grid-cols-1 super-sm:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-8 mb-32">
-          {products.map((card) => (
-            <Card
-              key={card.id}
-              id={card.id}
-              title={card.title}
-              price={card.price}
-              inCart={card.inCart}
-            />
-          ))}
+      <div>
+        <h2>Here you can add the product to the basket</h2>
+        <div className="flex items-center justify-center">
+          <div className="grid grid-cols-1 super-sm:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-8 mb-32">
+            {products.map((card) => (
+              <Card
+                key={card.id}
+                id={card.id}
+                title={card.title}
+                price={card.price}
+                inCart={card.inCart}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </main>

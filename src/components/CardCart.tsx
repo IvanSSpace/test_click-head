@@ -1,5 +1,6 @@
 // src/components/CardCart.tsx
 import Image from 'next/image';
+import { toast } from 'react-toastify';
 import { useBalanceStore, useBoughtStore, useProductsStore } from '@/store/store';
 
 interface CardProps {
@@ -13,13 +14,15 @@ const CardCart: React.FC<CardProps> = ({ title, price, id }) => {
   const { buyWithDollars, buyWithCoins, dollars, coins } = useBalanceStore();
   const { buyProduct } = useBoughtStore();
 
-  const  handleBuyUseDollars = () => {
+  const handleBuyUseDollars = () => {
     if (dollars > price) {
       buyWithDollars(price)
       buyProduct(id)
     } else {
-      console.log('Not enough dollars');
-      
+      toast.error('top up your Dollars balance on the profile page', {
+        position: "top-right",
+      });
+
     }
   }
 
@@ -28,10 +31,11 @@ const CardCart: React.FC<CardProps> = ({ title, price, id }) => {
       buyWithCoins(price)
       buyProduct(id)
     } else {
-      console.log('Not enough coins');
-      
+      toast.error('top up your Coins balance on the profile page', {
+        position: "top-right",
+      });
     }
-  } 
+  }
 
   const handleRemoveClick = () => {
     removeFromCart(id);
