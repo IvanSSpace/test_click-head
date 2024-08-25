@@ -52,6 +52,9 @@ const useProductsStore = create<ProductsStore>((set) => ({
   },
 }));
 
+export const useInCartCount = () =>
+  useProductsStore((state) => state.products.filter((product) => product.inCart).length);
+
 // src/store/balanceStore.ts
 
 interface BalanceStore {
