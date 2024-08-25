@@ -52,7 +52,7 @@ const BalanceComponent = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-100 p-6">
+    <div className="flex flex-col items-center justify-center bg-gray-100 p-6 pb-32">
       <div className="max-w-[400px] w-full bg-white p-6 shadow-lg rounded-lg">
         <h2 className="text-2xl font-bold mb-6 text-center">Balance Management</h2>
 

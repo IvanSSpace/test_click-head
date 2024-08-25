@@ -19,13 +19,13 @@ const Card: React.FC<Product> = ({ title, price, id, inCart }) => {
     toggleCart(id);
   };
 
-  const handleDivClick = () => {
-    router.push(`/products/${id}`);
-  };
+  // const handleDivClick = () => { это тз так что думаю что этот функционал излишен
+  //   router.push(`/products/${id}`);
+  // };
 
   return (
     <div className="flex flex-col justify-between max-w-[320px] bg-white p-4 shadow-lg rounded-lg">
-      <div className='pb-3' onClick={handleDivClick}>
+      <div className='pb-3'>
         <div className="h-[216px] w-full bg-blue-red-gradient rounded-lg"></div>
         <h2 className="font-bold lg:text-xl text-market-red mt-2 text-lg">{price}</h2>
         <h2 className="text-market-blue mt-1 text-lg">{title}</h2>
