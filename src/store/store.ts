@@ -1,6 +1,7 @@
 import { Product } from "@/interfaces/Product";
 import axios from "axios";
 import { create } from "zustand";
+import { BalanceStore } from "./storeInterfaces";
 
 interface ProductsStore {
   products: Product[];
@@ -46,4 +47,95 @@ const useProductsStore = create<ProductsStore>((set) => ({
   },
 }));
 
-export { useProductsStore };
+// src/store/balanceStore.ts
+
+interface BalanceStore {
+  dollars: number;
+  coins: number;
+  addDollars: (amount: number) => void;
+  buyWithCoins: (amount: number) => void;
+  buyWithDollars: (amount: number) => void;
+  convertDollarsToCoins: (amount: number) => void;
+}
+
+const useBalanceStore = create<BalanceStore>((set, get) => ({
+  dollars: 10, // начальный баланс в долларах
+  coins: 0, // начальный баланс в коинах
+  addDollars: (amount: number) => {
+    if (amount > 0) {
+      set((state) => ({ dollars: state.dollars + amount }));
+    }
+  },
+  buyWithDollars: (amount: number) => {
+    const currentDollars = get().dollars;
+    if (amount > 0 && currentDollars >= amount) {
+      set((state) => ({ dollars: Math.round(state.dollars - amount) }));
+    } else {
+      if (amount <= 0) {
+        console.warn("Amount must be greater than 0");
+      } else {
+        console.warn("Insufficient dollars to complete the purchase");
+      }
+    }
+  },
+  buyWithCoins: (amount: number) => {
+    const currentCoins = get().coins;
+    if (amount > 0 && currentCoins >= amount) {
+      set((state) => ({ coins: Math.round(state.coins - amount) }));
+    } else {
+      if (amount <= 0) {
+        console.warn("Amount must be greater than 0");
+      } else {
+        console.warn("Insufficient coins to complete the purchase");
+      }
+    }
+  },
+  convertDollarsToCoins: (amount: number) => {
+    const currentDollars = get().dollars;
+    if (amount > 0 && currentDollars >= amount) {
+      set((state) => ({
+        dollars: Math.round(state.dollars - amount),
+        coins: state.coins + amount,
+      }));
+    } else {
+      if (amount <= 0) {
+        console.warn("Amount must be greater than 0");
+      } else {
+        console.warn("Insufficient dollars to convert to coins");
+      }
+    }
+  },
+
+}));
+
+
+interface Bought {
+  id: number;
+  count: number;
+}
+
+interface PurchasedStore {
+  bought: Bought[];
+  buyProduct: (id: number) => void;
+}
+
+const useBoughtStore = create<PurchasedStore>((set) => ({
+  bought: [],
+  buyProduct: (id: number) => {
+    set((state) => {
+      const productIndex = state.bought.findIndex((item) => item.id === id);
+
+      if (productIndex !== -1) {
+        const updatedBought = [...state.bought];
+        updatedBought[productIndex].count += 1;
+
+        return { bought: updatedBought };
+      } else {
+        return { bought: [...state.bought, { id, count: 1 }] };
+      }
+    });
+  },
+}));
+
+
+export { useProductsStore, useBalanceStore, useBoughtStore };

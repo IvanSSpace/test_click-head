@@ -1,6 +1,6 @@
 // src/components/CardCart.tsx
 import Image from 'next/image';
-import { useProductsStore } from '@/store/store';
+import { useBalanceStore, useBoughtStore, useProductsStore } from '@/store/store';
 
 interface CardProps {
   title: string;
@@ -10,6 +10,13 @@ interface CardProps {
 
 const CardCart: React.FC<CardProps> = ({ title, price, id }) => {
   const removeFromCart = useProductsStore((state) => state.removeFromCart);
+  const { buyWithDollars } = useBalanceStore();
+  const { buyProduct } = useBoughtStore();
+
+  const  handleBuyUseDollars = () => {
+    buyWithDollars(price)
+    buyProduct(id)
+  }
 
   const handleRemoveClick = () => {
     removeFromCart(id);
@@ -23,11 +30,20 @@ const CardCart: React.FC<CardProps> = ({ title, price, id }) => {
         <h2 className="text-market-blue h-8 mt-1 text-lg">{title}</h2>
       </div>
       <button
+        onClick={handleBuyUseDollars}
         className={`h-[36px] w-full rounded-md bg-market-green text-white`}
       >
         <div className="flex flex-row gap-1 sm:px-6 justify-center items-center">
           <Image className="sm:mr-6" src='./add-to-cart.svg' width={20} height={20} alt="basket" />
-          <p className="hidden sm:block text-nowrap">buy product</p>
+          <p className="hidden sm:block text-nowrap">buy use $</p>
+        </div>
+      </button>
+      <button
+        className={`h-[36px] w-full rounded-md bg-blue-red-gradient text-white`}
+      >
+        <div className="flex flex-row gap-1 sm:px-6 justify-center items-center">
+          <Image className="sm:mr-6" src='./add-to-cart.svg' width={20} height={20} alt="basket" />
+          <p className="hidden sm:block text-nowrap">buy use Coin</p>
         </div>
       </button>
       <button
