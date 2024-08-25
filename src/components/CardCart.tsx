@@ -10,13 +10,28 @@ interface CardProps {
 
 const CardCart: React.FC<CardProps> = ({ title, price, id }) => {
   const removeFromCart = useProductsStore((state) => state.removeFromCart);
-  const { buyWithDollars } = useBalanceStore();
+  const { buyWithDollars, buyWithCoins, dollars, coins } = useBalanceStore();
   const { buyProduct } = useBoughtStore();
 
   const  handleBuyUseDollars = () => {
-    buyWithDollars(price)
-    buyProduct(id)
+    if (dollars > price) {
+      buyWithDollars(price)
+      buyProduct(id)
+    } else {
+      console.log('Not enough dollars');
+      
+    }
   }
+
+  const handleBuyUseCoins = () => {
+    if (coins > price) {
+      buyWithCoins(price)
+      buyProduct(id)
+    } else {
+      console.log('Not enough coins');
+      
+    }
+  } 
 
   const handleRemoveClick = () => {
     removeFromCart(id);
@@ -34,15 +49,16 @@ const CardCart: React.FC<CardProps> = ({ title, price, id }) => {
         className={`h-[36px] w-full rounded-md bg-market-green text-white`}
       >
         <div className="flex flex-row gap-1 sm:px-6 justify-center items-center">
-          <Image className="sm:mr-6" src='./add-to-cart.svg' width={20} height={20} alt="basket" />
+          <Image className="sm:mr-6" src='./dollar.svg' width={20} height={20} alt="basket" />
           <p className="hidden sm:block text-nowrap">buy use $</p>
         </div>
       </button>
       <button
+        onClick={handleBuyUseCoins}
         className={`h-[36px] w-full rounded-md bg-blue-red-gradient text-white`}
       >
         <div className="flex flex-row gap-1 sm:px-6 justify-center items-center">
-          <Image className="sm:mr-6" src='./add-to-cart.svg' width={20} height={20} alt="basket" />
+          <Image className="sm:mr-6" src='./buy.svg' width={20} height={20} alt="basket" />
           <p className="hidden sm:block text-nowrap">buy use Coin</p>
         </div>
       </button>
