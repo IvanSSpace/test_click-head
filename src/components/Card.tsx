@@ -1,4 +1,3 @@
-// src/components/Card.tsx
 import Image from 'next/image';
 import Button from './ui/Button';
 import { useProductsStore } from '@/store/store';
@@ -18,10 +17,6 @@ const Card: React.FC<Product> = ({ title, price, id, inCart }) => {
   const handleClick = () => {
     toggleCart(id);
   };
-
-  // const handleDivClick = () => { это тз так что думаю что этот функционал излишен
-  //   router.push(`/products/${id}`);
-  // };
 
   return (
     <div className="flex flex-col justify-between max-w-[320px] bg-white p-4 shadow-lg rounded-lg">

@@ -55,8 +55,6 @@ const useProductsStore = create<ProductsStore>((set) => ({
 export const useInCartCount = () =>
   useProductsStore((state) => state.products.filter((product) => product.inCart).length);
 
-// src/store/balanceStore.ts
-
 interface BalanceStore {
   dollars: number;
   coins: number;
@@ -67,8 +65,8 @@ interface BalanceStore {
 }
 
 const useBalanceStore = create<BalanceStore>((set, get) => ({
-  dollars: 10, // начальный баланс в долларах
-  coins: 0, // начальный баланс в коинах
+  dollars: 10,
+  coins: 0,
   addDollars: (amount: number) => {
     if (amount > 0) {
       set((state) => ({ dollars: state.dollars + amount }));
