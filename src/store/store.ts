@@ -125,9 +125,10 @@ interface Bought {
 interface PurchasedStore {
   bought: Bought[];
   buyProduct: (id: number) => void;
+  getTotalBoughtCount: () => number;
 }
 
-const useBoughtStore = create<PurchasedStore>((set) => ({
+const useBoughtStore = create<PurchasedStore>((set, get) => ({
   bought: [],
   buyProduct: (id: number) => {
     set((state) => {
@@ -143,7 +144,13 @@ const useBoughtStore = create<PurchasedStore>((set) => ({
       }
     });
   },
+  getTotalBoughtCount: () => {
+    const { bought } = get();
+    return bought.reduce((total, item) => total + item.count, 0);
+  },
 }));
+
+export const useTotalBoughtCount = () => useBoughtStore((state) => state.getTotalBoughtCount());
 
 
 export { useProductsStore, useBalanceStore, useBoughtStore };

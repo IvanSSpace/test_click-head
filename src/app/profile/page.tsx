@@ -7,21 +7,20 @@ export default function Cart() {
   const { bought } = useBoughtStore();
   const { products } = useProductsStore();
 
-  // Создаем массив купленных продуктов с полной информацией
   const boughtProducts = bought.map((boughtItem) => {
     const product = products.find((p) => p.id === boughtItem.id);
     return {
       ...boughtItem,
       product,
     };
-  }).filter((item) => item.product); // Фильтруем, чтобы убрать ненайденные продукты
+  }).filter((item) => item.product);
 
 
   return (
     <div>
       <div>
-        <h2>Bought Products</h2>
-        <div className="flex items-center justify-center">
+        <h2 className="bg-black text-white inline-block rounded-md p-1">on this page you can top up or convert your balance into koins</h2>
+        <div className="flex items-center justify-center mt-5">
         {boughtProducts.length === 0 ? (
           <p>No products bought yet.</p>
         ) : (

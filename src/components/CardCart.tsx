@@ -1,4 +1,3 @@
-// src/components/CardCart.tsx
 import Image from 'next/image';
 import { toast } from 'react-toastify';
 import { useBalanceStore, useBoughtStore, useProductsStore } from '@/store/store';
@@ -62,7 +61,7 @@ const CardCart: React.FC<CardProps> = ({ title, price, id }) => {
       >
         <div className="flex flex-row gap-1 sm:px-6 justify-center items-center">
           <Image className="sm:mr-6" src='./dollar.svg' width={20} height={20} alt="basket" />
-          <p className="hidden sm:block text-nowrap">buy use $</p>
+          <p className="text-nowrap">buy use dollars</p>
         </div>
       </button>
       <button
@@ -71,7 +70,7 @@ const CardCart: React.FC<CardProps> = ({ title, price, id }) => {
       >
         <div className="flex flex-row gap-1 sm:px-6 justify-center items-center">
           <Image className="sm:mr-6" src='./buy.svg' width={20} height={20} alt="basket" />
-          <p className="hidden sm:block text-nowrap">buy use Coin</p>
+          <p className="text-nowrap">buy use Coin</p>
         </div>
       </button>
       <button
@@ -80,7 +79,7 @@ const CardCart: React.FC<CardProps> = ({ title, price, id }) => {
       >
         <div className="flex flex-row gap-1 sm:px-6 justify-center items-center">
           <Image className="sm:mr-6" src='./bin.svg' width={20} height={20} alt="basket" />
-          <p className="hidden sm:block text-nowrap">de-cart</p>
+          <p className="text-nowrap">de-cart</p>
         </div>
       </button>
     </div>

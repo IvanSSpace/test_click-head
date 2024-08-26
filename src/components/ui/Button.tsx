@@ -1,4 +1,3 @@
-// src/components/ui/Button.tsx
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -25,7 +24,7 @@ const Button: React.FC<ButtonProps> = ({ onClick, inCart }) => {
     >
       <div className="flex flex-row gap-1 sm:px-6 justify-center items-center">
         <Image className="sm:mr-6" src='./add-to-cart.svg' width={20} height={20} alt="basket" />
-        <p className="hidden sm:block text-nowrap">{inCart ? 'In Cart' : 'Add to Cart'}</p>
+        <p className="text-nowrap">{inCart ? 'In Cart' : 'Add to Cart'}</p>
       </div>
     </button>
   );

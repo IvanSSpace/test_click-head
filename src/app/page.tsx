@@ -1,4 +1,3 @@
-// src/app/page.tsx
 "use client";
 
 import Card from "@/components/Card";
@@ -14,7 +13,7 @@ export default function Home() {
   return (
     <main>
       <div>
-        <h2>Here you can add the product to the basket</h2>
+        <h2 className="bg-black text-white inline-block rounded-md p-1">here you can add the product to the basket</h2>
         <div className="flex items-center justify-center">
           <div className="grid grid-cols-1 super-sm:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-8 mb-32">
             {products.map((card) => (
