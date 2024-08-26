@@ -14,7 +14,7 @@ export default function Home() {
     <main>
       <div>
         <h2 className="bg-black text-white inline-block rounded-md p-1">here you can add the product to the basket</h2>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center mt-5 justify-center">
           <div className="grid grid-cols-1 super-sm:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-8 mb-32">
             {products.map((card) => (
               <Card

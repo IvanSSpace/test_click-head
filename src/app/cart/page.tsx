@@ -11,7 +11,7 @@ export default function Cart() {
   return (
     <main>
       <div>
-        <h2 className="bg-black text-white inline-block rounded-md p-1 mb-6">here you can pay for the goods in one of the offered currencies</h2>
+        <h2 className="bg-black text-white inline-block rounded-md p-1">here you can pay for the goods in one of the offered currencies</h2>
         <div className="flex items-center justify-center mt-5">
           {cartProducts.length === 0 ? (
             <p className="text-start">products not yet added</p>
